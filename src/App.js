@@ -1,8 +1,8 @@
-import UserForm from './Components/UserForm/UserForm';
+import UserFormPage from './Components/UserFormPage/UserFormPage';
 
 function App() {
   return (
-    <UserForm/>
+    <UserFormPage/>
   );
 }
 

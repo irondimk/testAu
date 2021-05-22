@@ -1,0 +1,28 @@
+.statusBlock{
+    font-size: 14px;
+    line-height: 22px;
+    color: #404040;
+    background: #EAEAEA;
+    padding: 12px;
+    width: 503px;
+    position: relative;
+    margin-right: 0;
+    margin-left: auto;
+    &::before{
+        content: "";
+        display: block;
+        width: 11px;
+        height: 11px;
+        background: #EAEAEA;
+        position: absolute;
+        left: 8px;
+        top: -5px;
+        transform: rotate(45deg);
+    }
+    &__input{
+        width: 100%;
+        &[disabled]{
+            background: #EAEAEA;
+        }
+    }
+}

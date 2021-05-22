@@ -3,16 +3,20 @@
     margin: 0 auto;
     background: #FFFFFF;
     font-family: Arial;
-    padding: 90px 0 100px 100px;
+    padding: 90px 89px 100px 100px;
+    &__header_wrapper{
+        width: 720px;
+        margin-bottom: 32px;
+    }
     &__header{
         display: flex;
+        justify-content: space-between;
         margin-bottom: 4px;
     }
     &__title{
         font-size: 30px;
         line-height: 34px;
         color: #666666;
-        margin-right: 123px;
     }
     &__title_username{
         color: #000;
@@ -23,8 +27,9 @@
         color: #0C77BB;
         border-bottom: 1px dashed #0C77BB;
         margin-top: 12px;
+        cursor: pointer;
         &:hover{
-            border-bottom: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0);
         }
     }
 }
