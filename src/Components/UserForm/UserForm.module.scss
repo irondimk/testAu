@@ -1,0 +1,30 @@
+.formPage{
+    width: 1169px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    font-family: Arial;
+    padding: 90px 0 100px 100px;
+    &__header{
+        display: flex;
+        margin-bottom: 4px;
+    }
+    &__title{
+        font-size: 30px;
+        line-height: 34px;
+        color: #666666;
+        margin-right: 123px;
+    }
+    &__title_username{
+        color: #000;
+    }
+    &__editStatus_btn{
+        font-size: 12px;
+        line-height: 22px;
+        color: #0C77BB;
+        border-bottom: 1px dashed #0C77BB;
+        margin-top: 12px;
+        &:hover{
+            border-bottom: none;
+        }
+    }
+}
