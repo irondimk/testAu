@@ -1,15 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 
 import classes from './FormUser.module.scss';
+
+import Validators from '../../../Utils/Validators/Validators';
 import InputTemplate from './InputTemplates/InputTemplate';
 import ContainerCitySelect from './SelectTemplate/ContainerCitySelect';
-import SelectTemplate from './SelectTemplate/SelectTemplate';
 
 const FormUser = () => {
 
+  let [lastEdit, setLastEdit] = useState("последнее изменение никогда");
+
+
+  let createDateString = () => {
+    let currentDate = new Date();
+    let optionsGlobal = {
+      month: 'long',
+      day: 'numeric',
+    };
+    let optionsClock = {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    }
+    let dayAndMonth = currentDate.toLocaleString("ru", optionsGlobal);
+    let hoursMinSec = currentDate.toLocaleString("ru", optionsClock);
+    return `${dayAndMonth} ${currentDate.getFullYear()} в ${hoursMinSec}`
+  }
+
   let onSubmit = (valueForm) => {
-    console.log("submit");
+
+    setLastEdit(createDateString())
+    console.log(lastEdit);
+
+    let result = {
+      city: valueForm.choosecity,
+      password: valueForm.password,
+      email: valueForm.email,
+      isSendToEmail: valueForm.notification
+    }
+    console.log(JSON.stringify(result));
   }
 
     return (
@@ -19,29 +49,10 @@ const FormUser = () => {
 
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          {/* <Field name="city">
-            {({ input, meta }) => (
-              <div className={classes.form__input_block}>
-                <label className={classes.form__label}>Ваш город</label>
-                <Field className={classes.form__input} name="choosecity" component="select">
-              <option />
-              <option value="#ff0000">Red</option>
-              <option value="#00ff00">Green</option>
-              <option value="#0000ff">Blue</option>
-            </Field>
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            )}
-          </Field> */}
-          
-          {/* <SelectTemplate 
-            name="cityChoose"
-            label="Ваш город"
-          /> */}
 
           <ContainerCitySelect 
           name="cityChoose"
-            label="Ваш город" />
+          label="Ваш город" />
 
               <div className={classes.form__line} />
 
@@ -49,13 +60,22 @@ const FormUser = () => {
           name="password" 
           typeText="password" 
           label="Пароль"
-          prompt="Ваш новый пароль должен содержать не менее 5 символов." />
+          prompt="Ваш новый пароль должен содержать не менее 5 символов." 
+          validator={Validators.composeValidators(
+            Validators.passwordSave,
+            Validators.minCount(5),
+            Validators.emptyValid("Укажите пароль"))}
+          />
 
           <InputTemplate 
           name="repeat-password" 
           typeText="password" 
           label="Пароль ещё раз"
-          prompt="Повторите пароль, пожалуйста, это обезопасит вас с нами на случай ошибки." />
+          prompt="Повторите пароль, пожалуйста, это обезопасит вас с нами на случай ошибки." 
+          validator={Validators.composeValidators(
+            Validators.retryPasswordCheck, 
+          Validators.emptyValid("Укажите пароль"))}
+          />
 
 <div className={classes.form__line} />
 
@@ -63,7 +83,12 @@ const FormUser = () => {
           name="email" 
           typeText="text" 
           label="Электронная почта"
-          prompt="Можно изменить адрес, указанный при регистрации." />
+          prompt="Можно изменить адрес, указанный при регистрации." 
+          validator={Validators.composeValidators(
+            Validators.emptyValid("Укажите E-mail"), 
+            Validators.emailCheck
+          )}
+          />
 
 <Field name="notification" type="checkbox">
             {({ input, meta }) => (
@@ -73,17 +98,17 @@ const FormUser = () => {
                 <label className={classes.form__checkbox_descr}>
                 <input className={classes.form__checkbox} {...input} type="checkbox" />
                 {" "}принимать актуальную информацию на емейл</label>
-                {/* {meta.error && meta.touched && <span>{meta.error}</span>} */}
               </div>
               </div>
             )}
           </Field>
-
           
+            <div className={classes.form__submit_block}>
             <button className={classes.form__submit_btn} type="submit" disabled={submitting}>
               Изменить
             </button>
-          
+            <p className={classes.form__lastEdit}>последнее изменение {lastEdit} </p>
+            </div>
         </form>
       )}/>
         </div>
