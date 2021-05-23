@@ -15,7 +15,9 @@ let Validators = {
             if(value == passwordInput){
                 return undefined
             }
-            return "Пароли не совпадают"
+            else{
+                return "Пароли не совпадают"
+            }
         }
     },
 
@@ -23,14 +25,27 @@ let Validators = {
         if(value){
             return undefined
         }
-        return text;
+        else{
+            return text;
+        }
     },
+    citiesValid: (text) => (value) => {
+        if(value == undefined){
+            return text;
+        }
+        else{
+            return undefined
+        }
+    },
+
     minCount: (size) => (value) => {
         if(value){
             if(value.length >= size){
                 return undefined
             }
-            return `Используйте не менее ${size} символов`; 
+            else{
+                return `Используйте не менее ${size} символов`; 
+            }
         }
     },
     emailCheck: (value) => {
@@ -43,7 +58,14 @@ let Validators = {
             }
         }
     },
+    // cityValid: (value) => {
+    //     if(value){
+    //         return undefined
+    //     }
+    //     else{
 
+    //     }
+    // },
     composeValidators: (...validators) => value => validators.reduce((error, validator) => error || validator(value), undefined)
 }
 

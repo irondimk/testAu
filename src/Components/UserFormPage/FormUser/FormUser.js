@@ -29,12 +29,10 @@ const FormUser = () => {
   }
 
   let onSubmit = (valueForm) => {
-
     setLastEdit(createDateString())
-    console.log(lastEdit);
 
     let result = {
-      city: valueForm.choosecity,
+      city: valueForm.cityChoose,
       password: valueForm.password,
       email: valueForm.email,
       isSendToEmail: valueForm.notification
@@ -46,15 +44,17 @@ const FormUser = () => {
         <div>
             <Form
       onSubmit={onSubmit}
-
+      subscription={{ submitting: true, pristine: true }}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
 
           <ContainerCitySelect 
           name="cityChoose"
-          label="Ваш город" />
+          label="Ваш город" 
+            validate={Validators.citiesValid("Укажите ваш город")}
+          />
 
-              <div className={classes.form__line} />
+              <div className={classes.form__line + " " + classes.form__first_line} />
 
           <InputTemplate 
           name="password" 
@@ -102,9 +102,9 @@ const FormUser = () => {
               </div>
             )}
           </Field>
-          
+         
             <div className={classes.form__submit_block}>
-            <button className={classes.form__submit_btn} type="submit" disabled={submitting}>
+            <button className={classes.form__submit_btn} type="submit" disabled={submitting || pristine}>
               Изменить
             </button>
             <p className={classes.form__lastEdit}>последнее изменение {lastEdit} </p>

@@ -12,7 +12,7 @@ const InputTemplate = (props) => {
               <div className={classes.form__input_block}>
                 <label className={classes.form__label}>{props.label}</label>
                 <div className={classes.form__input_wrapper}>
-                <input className={classes.form__input} {...input} type={props.typeText} />
+                <input className={(meta.error && meta.touched) ? classes.form__input_error : classes.form__input} {...input} type={props.typeText} />
                 {meta.error && meta.touched && <span className={classes.form__error}>{meta.error}</span>}
                 </div>
               </div>
