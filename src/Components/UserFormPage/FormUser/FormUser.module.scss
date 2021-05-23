@@ -37,4 +37,30 @@
     text-align: left;
     width: 100%;
   }
+  &__checkbox_block{
+    width: 594px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    margin-right: 18px;
+    flex-shrink: 0;
+    font-size: 16px;
+line-height: 19px;
+  }
+  &__checkbox{
+    width: auto;
+  }
+  &__checkbox_descr{
+
+  }
+  &__submit_btn{
+    padding: 10px 18px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #FFFFFF;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+    background: #71C838;
+     box-shadow: 0px 1px 0px #539D22;
+     margin-left: 224px;
+  }
 }

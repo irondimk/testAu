@@ -26,7 +26,6 @@ const ContainerCitySelect = (props) => {
         maxPopulationCity = {
                 population: 0
         };
-        debugger;
         for(let elem of cities){
             if(Number(elem.population) > Number(maxPopulationCity.population)){
                 maxPopulationCity = {...elem}

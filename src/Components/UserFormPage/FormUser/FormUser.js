@@ -9,7 +9,7 @@ import SelectTemplate from './SelectTemplate/SelectTemplate';
 const FormUser = () => {
 
   let onSubmit = (valueForm) => {
-    debugger;
+    console.log("submit");
   }
 
     return (
@@ -65,11 +65,25 @@ const FormUser = () => {
           label="Электронная почта"
           prompt="Можно изменить адрес, указанный при регистрации." />
 
-          <div className="buttons">
-            <button type="submit" disabled={submitting}>
-              Submit
+<Field name="notification" type="checkbox">
+            {({ input, meta }) => (
+              <div className={classes.form__wrapper_input_block}>
+              <div className={classes.form__checkbox_block}>
+                <label className={classes.form__label}>Я согласен</label>
+                <label className={classes.form__checkbox_descr}>
+                <input className={classes.form__checkbox} {...input} type="checkbox" />
+                {" "}принимать актуальную информацию на емейл</label>
+                {/* {meta.error && meta.touched && <span>{meta.error}</span>} */}
+              </div>
+              </div>
+            )}
+          </Field>
+
+          
+            <button className={classes.form__submit_btn} type="submit" disabled={submitting}>
+              Изменить
             </button>
-          </div>
+          
         </form>
       )}/>
         </div>
