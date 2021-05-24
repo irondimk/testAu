@@ -1,6 +1,6 @@
 
 
-let passwordInput = ""
+let passwordInput = "";
 
 let Validators = {
 
@@ -58,14 +58,6 @@ let Validators = {
             }
         }
     },
-    // cityValid: (value) => {
-    //     if(value){
-    //         return undefined
-    //     }
-    //     else{
-
-    //     }
-    // },
     composeValidators: (...validators) => value => validators.reduce((error, validator) => error || validator(value), undefined)
 }
 

@@ -6,7 +6,6 @@ import SelectTemplate from './SelectTemplate';
 const ContainerCitySelect = (props) => {
 
     let [bigCities, setBigCities] = useState(null);
-
     
     let maxPopulationCity = {
         population: 0
@@ -56,8 +55,6 @@ const ContainerCitySelect = (props) => {
         
     }, [])
 
-    
-    
     return (
         <SelectTemplate data={bigCities} {...props}/>
     );
