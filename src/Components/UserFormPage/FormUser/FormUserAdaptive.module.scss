@@ -32,6 +32,9 @@
         &__first_line{
             margin-top: 26px;
         }
+        &__input_error{
+            width: 100%;
+        }
     }
 }
 
@@ -50,6 +53,7 @@
         }
         &__checkbox_block{
             flex-direction: column;
+            width: auto;
         }
         &__submit_block{
             margin-left: 0;
