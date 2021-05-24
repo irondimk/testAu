@@ -9,7 +9,7 @@ import ContainerCitySelect from './SelectTemplate/ContainerCitySelect';
 
 const FormUser = () => {
 
-  let [lastEdit, setLastEdit] = useState("последнее изменение никогда");
+  let [lastEdit, setLastEdit] = useState(" никогда");
 
 
   let createDateString = () => {

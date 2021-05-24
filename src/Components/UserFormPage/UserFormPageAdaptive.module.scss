@@ -8,6 +8,28 @@
 @media(max-width: 830px){
     .formPage{
         
-        
+        &__header_wrapper{
+            width: auto;
+        }
     }
+}
+
+@media(max-width: 666px){
+    .formPage{
+        
+        &__header_wrapper{
+            
+        }
+        &__header{
+            display: block;
+            margin-bottom: 10px;
+        }
+        &__editStatus_btn{
+            font-size: 17px;
+        }
+        &__title{
+            margin-bottom: 10px;
+        }
+    }
+    
 }
